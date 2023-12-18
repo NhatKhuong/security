@@ -53,7 +53,10 @@ public class SecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .requestMatchers("/**").permitAll() // Cho phép mọi người truy cập tất cả các đường dẫn mà không yêu cầu xác thực
+                .requestMatchers("/api/v1/auth/**").permitAll() // Cho phép mọi người truy cập tất cả các đường dẫn mà không yêu cầu xác thực
+                .requestMatchers("/demo/admin").hasRole("ADMIN")
+                .requestMatchers("/demo/user").hasRole("USER")
+                .anyRequest().authenticated()
                 .and()
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

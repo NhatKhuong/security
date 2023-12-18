@@ -33,11 +33,12 @@ public class SecuriryApplication {
 //			userService.saveRole(new Role(null,"ROLE_ADMIN"));
 //			userService.saveRole(new Role(null,"ROLE_SUPER_ADMIN"));
 //
-//			userService.saveUser(new User(null,"nhatkhuong" ,"nhatkhuong2001@gmail.com","nhatkhuong2001@gmail.com","123456"));
+//			userService.saveUser(new User(null,"nhatkhuong" ,"nhatkhuong20013@gmail.com","nhatkhuong20013@gmail.com","123458"));
 //			userService.saveUser(new User(null,"nhatkhuong2" ,"nhatkhuong20012@gmail.com","nhatkhuong20012@gmail.com","123457"));
 //
 //			userService.addToUser("nhatkhuong2001@gmail.com","ROLE_USER");
-//			userService.addToUser("nhatkhuong20012@gmail.com","ROLE_ADMIN");
+//			userService.addToUser("nhatkhuong20013@gmail.com","ROLE_ADMIN");
+//			userService.addToUser("nhatkhuong20013@gmail.com","ROLE_USER");
 //
 //		};
 //	}
