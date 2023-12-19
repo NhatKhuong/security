@@ -1,5 +1,9 @@
 package com.example.securiry.service;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.securiry.auth.AuthenticationRequest;
 import com.example.securiry.auth.AuthenticationResponse;
 import com.example.securiry.entity.Role;
@@ -56,5 +60,23 @@ public class AuthenticationService {
                 .token(jwtToken)
                 .refreshToken(jwtRefreshToken)
                 .build();
+    }
+
+    public boolean isValidToken(String token) throws Exception {
+        try {
+            String secretKey = "123";
+            Algorithm algorithm = Algorithm.HMAC256(secretKey.getBytes());
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            DecodedJWT decodedJWT = verifier.verify(token);
+            String username = decodedJWT.getSubject();
+            String[] roles = decodedJWT.getClaim("roles").asArray(String.class);
+            verifier.verify(token);
+
+            // Nếu không có exception, token hợp lệ
+            return true;
+        } catch (Exception e) {
+            // Xử lý exception nếu cần
+            throw new Exception("Token not validate");
+        }
     }
 }
